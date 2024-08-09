@@ -11,7 +11,7 @@
     left: 28px;
     border-radius: 50%;
     border: 16px solid #000;
-    border-color: #002663 transparent #002663 transparent;
+    border-color: #050A10 transparent #050A10 transparent;
     animation: ldio-x2uulkbinbj 1s linear infinite;
   }
   
@@ -23,7 +23,7 @@
     animation: ldio-x2uulkbinbj 1s linear infinite reverse;
   }
   .ldio-x2uulkbinbj > div:nth-child(2) {
-    border-color: transparent #bfc2ca transparent #bfc2ca
+    border-color: transparent #BEC6C9 transparent #BEC6C9
   }
   .ldio-x2uulkbinbj > div:nth-child(3) { border-color: transparent }
   .ldio-x2uulkbinbj > div:nth-child(3) div {
@@ -40,14 +40,14 @@
     height: 16px;
     top: -16px;
     left: 48px;
-    background: #002663;
+    background: #050A10;
     border-radius: 50%;
-    box-shadow: 0 128px 0 0 #002663;
+    box-shadow: 0 128px 0 0 #050A10;
   }
   .ldio-x2uulkbinbj > div:nth-child(3) div:after {
     left: -16px;
     top: 48px;
-    box-shadow: 128px 0 0 0 #002663;
+    box-shadow: 128px 0 0 0 #050A10;
   }
   
   .ldio-x2uulkbinbj > div:nth-child(4) { border-color: transparent; }
@@ -65,14 +65,14 @@
     height: 16px;
     top: -16px;
     left: 30px;
-    background: #bfc2ca;
+    background: #BEC6C9;
     border-radius: 50%;
-    box-shadow: 0 92px 0 0 #bfc2ca;
+    box-shadow: 0 92px 0 0 #BEC6C9;
   }
   .ldio-x2uulkbinbj > div:nth-child(4) div:after {
     left: -16px;
     top: 30px;
-    box-shadow: 92px 0 0 0 #bfc2ca;
+    box-shadow: 92px 0 0 0 #BEC6C9;
   }
   .loadingio-spinner-double-ring-nq4q5u6dq7r {
     width: 200px;

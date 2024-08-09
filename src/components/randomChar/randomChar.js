@@ -1,6 +1,7 @@
 import { ListGroup, ListGroupItem } from 'reactstrap';
 import React, {Component} from 'react';
 
+import ErrorMessage from '../errorMessage';
 import GotService from '../../services/gotService';
 import Spinner from '../spinner';
 import styled from 'styled-components';
@@ -36,6 +37,14 @@ export default class RandomChar extends Component {
     onCharLoaded = (char) => {
         this.setState({
             char,
+            loading: false,
+            error: false
+        })
+    }
+
+    onError = (error) => {
+        this.setState({
+            error: true,
             loading: false
         })
     }
@@ -44,16 +53,20 @@ export default class RandomChar extends Component {
         const id = Math.floor(Math.random()*140 + 25); //25-140
         this.gotService.getCharecter(id)
             .then(this.onCharLoaded)
+            .catch(this.onError);
     }
 
     render() {
-        const { char, loading } = this.state;
+        const { char, loading, error } = this.state;
         
-        const content = loading ? <Spinner/> : <Viev char={char}/>;
+        const errorMessage = error ? <ErrorMessage/> : null;
+        const spinner = loading ? <Spinner/> : null;
+        const content = !(loading || error) ?  <Viev char={char}/> : null;
   
-        
         return (
             <RandomBlock>
+                {errorMessage}
+                {spinner}
                 {content}
             </RandomBlock>
         );
