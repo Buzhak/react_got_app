@@ -44,7 +44,7 @@ export default class App extends Component {
                                 onClick={() => {
                                     this._changeShowRandomChar()
                                 }}>
-                                    Close Random Characte
+                                    Close Random Character
                             </Button>
                         </Col>
                     </Row>
