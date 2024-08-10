@@ -1,3 +1,4 @@
+const NO_DATA = 'unknown';
 export default class GotService {
     constructor() {
         this._apiBase = 'https://anapioficeandfire.com/api'
@@ -38,33 +39,45 @@ export default class GotService {
         return this.getResource(`/houses/`);
     }
 
+    _fixEmpyData(obj) {
+        for (let key in obj) {
+            if (!obj[key]) {
+                obj[key] = NO_DATA;
+            }
+        }
+        return obj;        
+    }
+
     _transformCharacter(char) {
+        const {name, gender, born, died, culture} = this._fixEmpyData(char);
         return {
-            name: char.name,
-            gender: char.gender,
-            born: char.born,
-            died: char.died,
-            culture: char.culture
+            name: name,
+            gender: gender,
+            born: born,
+            died: died,
+            culture: culture
         }
     }
 
     _transformHouse(house) {
+        const {name, region, words, titles, overlords, ancestralWeapon} = this._fixEmpyData(house);
         return {
-            name: house.name,
-            region: house.region,
-            words: house.words,
-            titles: house.titles,
-            overlords: house.overlords,
-            ancestralWeapon: house.ancestralWeapon
+            name: name,
+            region: region,
+            words: words,
+            titles: titles,
+            overlords: overlords,
+            ancestralWeapon: ancestralWeapon
         }
     }
 
     _transformBook(book) {
+        const {name, numberOfpages, publiser, released} = this._fixEmpyData(book);
         return {
-            name: book.name,
-            numberOfpages: book.numberOfpages,
-            publiser: book.publiser,
-            released: book.released
+            name: name,
+            numberOfpages: numberOfpages,
+            publiser: publiser,
+            released: released
         }
     }
 }

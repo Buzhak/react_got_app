@@ -73,8 +73,9 @@ export default class RandomChar extends Component {
     }
 }
 
-const Viev = ({char}) => {
+const Viev = ({char}) => {    
     const {name, gender, born, died, culture} = char;
+    
     return (
         <>
             <h4>Random Character: {name}</h4>
