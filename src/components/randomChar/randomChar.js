@@ -24,10 +24,6 @@ const RandomBlock = styled.div.attrs({
 `
 
 export default class RandomChar extends Component {
-    constructor() {
-        super();
-        this.updateChar();
-    }
     gotService = new GotService();
     state = {
         char: {},
@@ -49,16 +45,24 @@ export default class RandomChar extends Component {
         })
     }
 
-    updateChar() {
+    updateChar = () => {
         const id = Math.floor(Math.random()*140 + 25); //25-140
         this.gotService.getCharecter(id)
             .then(this.onCharLoaded)
             .catch(this.onError);
     }
 
+    componentDidMount() {
+        this.updateChar();
+        this.timerId = setInterval(this.updateChar, 10000);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.timerId);
+    }
+
     render() {
         const { char, loading, error } = this.state;
-        
         const errorMessage = error ? <ErrorMessage/> : null;
         const spinner = loading ? <Spinner/> : null;
         const content = !(loading || error) ?  <Viev char={char}/> : null;
@@ -73,7 +77,7 @@ export default class RandomChar extends Component {
     }
 }
 
-const Viev = ({char}) => {    
+const Viev = ({char}) => {   
     const {name, gender, born, died, culture} = char;
     
     return (
