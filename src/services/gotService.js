@@ -47,10 +47,16 @@ export default class GotService {
         }
         return obj;        
     }
-
+    _getId = (str) => {
+        const regex = /(\d+)$/;
+        const match = str.match(regex);
+        return parseInt(match[0], 10);
+    }
     _transformCharacter(char) {
-        const {name, gender, born, died, culture} = this._fixEmpyData(char);
+        const {url, name, gender, born, died, culture} = this._fixEmpyData(char);
+        
         return {
+            id: this._getId(url),
             name: name,
             gender: gender,
             born: born,

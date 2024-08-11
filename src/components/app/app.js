@@ -17,7 +17,8 @@ export default class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            showRandomChar: true
+            showRandomChar: true,
+            selectedChar: null
         }
     }
 
@@ -25,6 +26,12 @@ export default class App extends Component {
         this.setState((prevState) => ({
             showRandomChar: !prevState.showRandomChar 
         }))        
+    }
+
+    onCharSelected = (id) => {
+        this.setState({
+            selectedChar: id
+        })
     }
 
     render() {
@@ -50,10 +57,10 @@ export default class App extends Component {
                     </Row>
                     <Row>
                         <Col md='6'>
-                            <ItemList />
+                            <ItemList onCharSelected={this.onCharSelected}/>
                         </Col>
                         <Col md='6'>
-                            <CharDetails />
+                            <CharDetails charId={this.state.selectedChar}/>
                         </Col>
                     </Row>
                 </Container>
