@@ -27,6 +27,19 @@ export default class ItemList extends Component {
             })
     }
 
+    renderItems(arr) {
+        return  arr.map((item, k) => {
+            return (
+                <ListGroupItem 
+                    key={k}
+                    // onClick={this.props.onCharSelected(k)}
+                    >
+                    {item.name}
+                </ListGroupItem>
+            )
+        })
+    }
+
     render() {
         const {charList} = this.state;
 
@@ -34,18 +47,12 @@ export default class ItemList extends Component {
             return <Spinner/>
         }
 
+        const items = this.renderItems(charList)
+
         return (
             <ItemListBlock>
                 <ListGroup className="item-list">
-                    <ListGroupItem>
-                        John Snow
-                    </ListGroupItem>
-                    <ListGroupItem>
-                        Brandon Stark
-                    </ListGroupItem>
-                    <ListGroupItem>
-                        Geremy
-                    </ListGroupItem>
+                    {items}
                 </ListGroup>
             </ItemListBlock>
         );
