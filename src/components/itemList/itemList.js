@@ -1,8 +1,8 @@
-// import './itemList.css';
-
 import { ListGroup, ListGroupItem } from 'reactstrap';
 import React, {Component} from 'react';
 
+import GotService from '../../services/gotService';
+import Spinner from '../spinner';
 import styled from 'styled-components';
 
 const ItemListBlock = styled.div`
@@ -12,8 +12,28 @@ const ItemListBlock = styled.div`
 `
 
 export default class ItemList extends Component {
+    gotService = new GotService();
+
+    state = {
+        charList: null
+    }
+
+    componentDidMount() {
+        this.gotService.getAllCharacters()
+            .then( (charList) => {
+                this.setState({
+                    charList: charList
+                })
+            })
+    }
 
     render() {
+        const {charList} = this.state;
+
+        if (!charList) {
+            return <Spinner/>
+        }
+
         return (
             <ItemListBlock>
                 <ListGroup className="item-list">
