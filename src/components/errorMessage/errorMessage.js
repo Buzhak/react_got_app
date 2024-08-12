@@ -19,6 +19,7 @@ const ErrorBlock = styled.div.attrs({
     span {
         font-size: 1.1rem;
         text-transform: uppercase;
+        color: red;
     }
 `
 
