@@ -3,7 +3,7 @@ export default class GotService {
     constructor() {
         this._apiBase = 'https://anapioficeandfire.com/api'
     }
-    async getResource(url) {
+    getResource = async (url) => {
         const res = await fetch(`${this._apiBase}${url}`);
     
         if(!res.ok) {
@@ -13,33 +13,33 @@ export default class GotService {
         return await res.json();
     };
 
-    async getAllCharacters() {
+    getAllCharacters = async () => {
         const res = await this.getResource('/characters?page=5&pageSize=10');
         return res.map((char) => this._transformCharacter(char));
     }
 
-    async getCharecter(id) {
+    getCharecter = async (id) => {
         const res = await this.getResource(`/characters/${id}`);
         return this._transformCharacter(res);
     }
 
-    getBook(id) {
+    getBook = (id) => {
         return this.getResource(`/books/${id}`);
     }
 
-    getAllBooks() {
+    getAllBooks = () => {
         return this.getResource(`/books/`);
     }
 
-    getHouse(id) {
+    getHouse = (id) => {
         return this.getResource(`/houses/${id}`);
     }
 
-    getAllHouse() {
+    getAllHouse = () => {
         return this.getResource(`/houses/`);
     }
 
-    _fixEmpyData(obj) {
+    _fixEmpyData = (obj) => {
         for (let key in obj) {
             if (!obj[key]) {
                 obj[key] = NO_DATA;
@@ -52,7 +52,7 @@ export default class GotService {
         const match = str.match(regex);
         return parseInt(match[0], 10);
     }
-    _transformCharacter(char) {
+    _transformCharacter = (char) => {
         const {url, name, gender, born, died, culture} = this._fixEmpyData(char);
         
         return {
@@ -65,7 +65,7 @@ export default class GotService {
         }
     }
 
-    _transformHouse(house) {
+    _transformHouse = (house) => {
         const {name, region, words, titles, overlords, ancestralWeapon} = this._fixEmpyData(house);
         return {
             name: name,
@@ -77,7 +77,7 @@ export default class GotService {
         }
     }
 
-    _transformBook(book) {
+    _transformBook = (book) => {
         const {name, numberOfpages, publiser, released} = this._fixEmpyData(book);
         return {
             name: name,
