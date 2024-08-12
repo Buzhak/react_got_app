@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import CharDetails from '../charDetails';
 import CharacterPage from '../characterPage';
 import ErrorMessage from '../errorMessage';
+import GotService from '../../services/gotService';
 import Header from '../header';
 import ItemList from '../itemList';
 import RandomChar from '../randomChar';
@@ -16,6 +17,8 @@ const Main = styled.div`
 `
 
 export default class App extends Component {
+    gotService = new GotService();
+
     constructor(props) {
         super(props);
         this.state = {
@@ -64,6 +67,26 @@ export default class App extends Component {
                         </Col>
                     </Row>
                     <CharacterPage/>
+                    {/* <Row>
+                        <Col md='6'>
+                            <ItemList 
+                            onCharSelected={this.onCharSelected}
+                            getData={this.gotService.getAllBooks}/>
+                        </Col>
+                        <Col md='6'>
+                            <CharDetails charId={this.state.selectedChar}/>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col md='6'>
+                            <ItemList 
+                            onCharSelected={this.onCharSelected}
+                            getData={this.gotService.getAllHouses}/>
+                        </Col>
+                        <Col md='6'>
+                            <CharDetails charId={this.state.selectedChar}/>
+                        </Col>
+                    </Row> */}
                 </Container>
             </Main>
         );

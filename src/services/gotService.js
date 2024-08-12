@@ -35,7 +35,7 @@ export default class GotService {
         return this.getResource(`/houses/${id}`);
     }
 
-    getAllHouse = () => {
+    getAllHouses = () => {
         return this.getResource(`/houses/`);
     }
 
