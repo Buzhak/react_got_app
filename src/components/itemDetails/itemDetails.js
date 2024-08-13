@@ -1,7 +1,6 @@
 import { ListGroup, ListGroupItem } from 'reactstrap';
 import React, {Component} from 'react';
 
-import GotService from '../../services/gotService';
 import styled from 'styled-components';
 
 const CharDetailsBlock = styled.div.attrs({

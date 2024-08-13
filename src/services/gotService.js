@@ -83,13 +83,13 @@ export default class GotService {
     }
 
     _transformBook = (book) => {
-        const {url, name, numberOfpages, publiser, released} = this._fixEmpyData(book);
+        const {url, name, numberOfPages, publisher, released} = this._fixEmpyData(book);
        
         return {
             id: this._getId(url),
             name: name,
-            numberOfpages: numberOfpages,
-            publiser: publiser,
+            numberOfPages: numberOfPages,
+            publisher: publisher,
             released: released
         }
     }
