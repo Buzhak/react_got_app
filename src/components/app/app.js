@@ -1,11 +1,11 @@
 import {Button, Col, Container, Row} from 'reactstrap';
 import React, { Component } from 'react';
 
-import CharacterPage from '../characterPage';
+import CharacterPage from '../pages';
 import ErrorMessage from '../errorMessage';
 import GotService from '../../services/gotService';
 import Header from '../header';
-import ItemDetails from '../charDetails';
+import ItemDetails from '../itemDetails';
 import ItemList from '../itemList';
 import RandomChar from '../randomChar';
 import styled from 'styled-components'

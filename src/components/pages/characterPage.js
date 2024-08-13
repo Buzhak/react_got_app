@@ -1,4 +1,4 @@
-import ItemDetails, { Field } from "../charDetails";
+import ItemDetails, { Field } from "../itemDetails";
 import React, { Component } from "react";
 
 import ErrorMessage from '../errorMessage';
