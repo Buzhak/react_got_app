@@ -14,34 +14,38 @@ export default class GotService {
     };
 
     getAllCharacters = async () => {
-        const res = await this.getResource('/characters?page=5&pageSize=10');
-        return res.map((char) => this._transformCharacter(char));
+        const chars = await this.getResource('/characters?page=5&pageSize=10');
+        return chars.map((char) => this._transformCharacter(char));
     }
 
     getCharecter = async (id) => {
-        const res = await this.getResource(`/characters/${id}`);
-        return this._transformCharacter(res);
+        const char = await this.getResource(`/characters/${id}`);
+        return this._transformCharacter(char);
     }
 
-    getBook = (id) => {
-        return this.getResource(`/books/${id}`);
+    getBook = async (id) => {
+        const book = await this.getResource(`/books/${id}`);
+        return this._transformBook(book)
     }
 
-    getAllBooks = () => {
-        return this.getResource(`/books/`);
+    getAllBooks = async () => {
+        const books = await this.getResource(`/books/`);
+        return books.map((book) => this._transformBook(book));
     }
 
-    getHouse = (id) => {
-        return this.getResource(`/houses/${id}`);
+    getHouse = async (id) => {
+        const house = await this.getResource(`/houses/${id}`);
+        return this._transformHouse(house);
     }
 
-    getAllHouses = () => {
-        return this.getResource(`/houses/`);
+    getAllHouses = async () => {
+        const houses = await this.getResource(`/houses/`);
+        return houses.map((house) => this._transformHouse(house));
     }
 
     _fixEmpyData = (obj) => {
         for (let key in obj) {
-            if (!obj[key]) {
+            if (!obj[key] || obj[key].length === 0) {
                 obj[key] = NO_DATA;
             }
         }
@@ -66,8 +70,9 @@ export default class GotService {
     }
 
     _transformHouse = (house) => {
-        const {name, region, words, titles, overlords, ancestralWeapon} = this._fixEmpyData(house);
+        const {url, name, region, words, titles, overlords, ancestralWeapon} = this._fixEmpyData(house);
         return {
+            id: this._getId(url),
             name: name,
             region: region,
             words: words,
@@ -78,8 +83,10 @@ export default class GotService {
     }
 
     _transformBook = (book) => {
-        const {name, numberOfpages, publiser, released} = this._fixEmpyData(book);
+        const {url, name, numberOfpages, publiser, released} = this._fixEmpyData(book);
+       
         return {
+            id: this._getId(url),
             name: name,
             numberOfpages: numberOfpages,
             publiser: publiser,

@@ -5,15 +5,15 @@ import GotService from '../../services/gotService';
 import styled from 'styled-components';
 
 const CharDetailsBlock = styled.div.attrs({
-    className: "char-details rounded"
+    className: "item-details rounded"
 })`
-    &.char-details {
+    &.item-details {
         background-color: #fff;
         padding: 25px 25px 15px 25px;
         margin-bottom: 40px;
     }
 
-    &.char-details h4 {
+    &.item-details h4 {
         margin-bottom: 20px;
         text-align: center;
     }
@@ -43,7 +43,7 @@ export {
 }
 
 export default class ItemDetails extends Component {
-    gotService = new GotService();
+    // gotService = new GotService();
     state = {
         item: null
     }
@@ -64,7 +64,7 @@ export default class ItemDetails extends Component {
         if (!itemId) {
             return;
         }
-        this.gotService.getCharecter(itemId)
+        this.props.getItem(itemId)
             .then((item) => {
                 this.setState({item})
             })
@@ -73,7 +73,7 @@ export default class ItemDetails extends Component {
     render() {
 
         if (!this.state.item) {
-            return <SelectError>Please select a charecter</SelectError>
+            return <SelectError>Please select {this.props.title}</SelectError>
         }
         const {item} = this.state;
         const {name} = item;

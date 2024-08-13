@@ -1,3 +1,9 @@
+import BookPage from './bookPage';
 import CharacterPage from './characterPage';
+import HousePage from './housePage';
 
-export default CharacterPage;
+export {
+    CharacterPage, 
+    BookPage, 
+    HousePage
+};
