@@ -1,11 +1,11 @@
 import {Button, Col, Container, Row} from 'reactstrap';
 import React, { Component } from 'react';
 
-import CharDetails from '../charDetails';
 import CharacterPage from '../characterPage';
 import ErrorMessage from '../errorMessage';
 import GotService from '../../services/gotService';
 import Header from '../header';
+import ItemDetails from '../charDetails';
 import ItemList from '../itemList';
 import RandomChar from '../randomChar';
 import styled from 'styled-components'
@@ -70,7 +70,7 @@ export default class App extends Component {
                     {/* <Row>
                         <Col md='6'>
                             <ItemList 
-                            onCharSelected={this.onCharSelected}
+                            onItemSelected={this.onItemSelected}
                             getData={this.gotService.getAllBooks}/>
                         </Col>
                         <Col md='6'>
@@ -80,7 +80,7 @@ export default class App extends Component {
                     <Row>
                         <Col md='6'>
                             <ItemList 
-                            onCharSelected={this.onCharSelected}
+                            onItemSelected={this.onItemSelected}
                             getData={this.gotService.getAllHouses}/>
                         </Col>
                         <Col md='6'>

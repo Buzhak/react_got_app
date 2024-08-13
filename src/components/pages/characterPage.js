@@ -1,7 +1,6 @@
-import { Col, Row } from 'reactstrap';
+import ItemDetails, { Field } from "../charDetails";
 import React, { Component } from "react";
 
-import CharDetails from "../charDetails";
 import ErrorMessage from '../errorMessage';
 import GotService from '../../services/gotService';
 import ItemList from "../itemList";
@@ -14,7 +13,7 @@ export default class CharacterPage extends Component {
         selectedChar: null
     }
 
-    onCharSelected = (id) => {
+    onItemSelected = (id) => {
         this.setState({
             selectedChar: id,
             error: false
@@ -35,13 +34,18 @@ export default class CharacterPage extends Component {
 
         const itemList = (
             <ItemList 
-                    onCharSelected={this.onCharSelected}
+                    onItemSelected={this.onItemSelected}
                     getData={this.gotService.getAllCharacters}
                     renderItem={(item) => `${item.name} (${item.gender})`}/>
         )
 
         const charDetails = (
-            <CharDetails charId={this.state.selectedChar}/>
+            <ItemDetails itemId={this.state.selectedChar}>
+                <Field field='gender' label='Gender'/>
+                <Field field='born' label='Born'/>
+                <Field field='died' label='Died'/>
+                <Field field='culture' label='Culture'/>
+            </ItemDetails>
         )
 
         return (

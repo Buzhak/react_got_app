@@ -33,7 +33,7 @@ export default class ItemList extends Component {
             return (
                 <ListGroupItem 
                     key={id}
-                    onClick={() => this.props.onCharSelected(id)}
+                    onClick={() => this.props.onItemSelected(id)}
                     >
                     {label}
                 </ListGroupItem>
