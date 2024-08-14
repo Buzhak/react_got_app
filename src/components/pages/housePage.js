@@ -45,8 +45,6 @@ export default class HousePage extends Component {
                 <Field field='region' label='Region'/>
                 <Field field='words' label='Words'/>
                 <Field field='titles' label='Titles'/>
-                {/* <Field field='overlord' label='Overlord'/> */}
-                {/* <Field field='ancestralWeapon' label='Ancestral weapon'/> */}
             </ItemDetails>
         )
 

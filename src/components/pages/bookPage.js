@@ -1,12 +1,11 @@
-import ItemDetails, { Field } from "../itemDetails";
 import React, { Component } from "react";
 
 import ErrorMessage from '../errorMessage';
 import GotService from '../../services/gotService';
 import ItemList from "../itemList";
-import RowBlock from '../rowBlock';
+import { useNavigate } from 'react-router-dom';
 
-export default class BookPage extends Component {
+class BookPage extends Component {
     gotService = new GotService();
 
     state = {
@@ -18,6 +17,7 @@ export default class BookPage extends Component {
             selectedItem: id,
             error: false
         })
+        this.props.navigate(`${id}`)
     }
 
     componentDidCatch() {
@@ -32,24 +32,18 @@ export default class BookPage extends Component {
             return <ErrorMessage/>
         }
 
-        const itemList = (
+        return (
             <ItemList 
                     onItemSelected={this.onItemSelected}
                     getData={this.gotService.getAllBooks}
                     renderItem={(item) => `${item.name}`}/>
         )
-
-        const itemDetails = (
-            <ItemDetails itemId={this.state.selectedItem} getItem={this.gotService.getBook} title={'book'}>
-                <Field field='name' label='Title'/>
-                <Field field='numberOfPages' label='Number of pages'/>
-                <Field field='publisher' label='Published'/>
-                <Field field='released' label='Released'/>
-            </ItemDetails>
-        )
-
-        return (
-            <RowBlock left={itemList} right={itemDetails}/>
-        )
     }
 }
+
+function BookPageWrapper() {
+    const navigate = useNavigate();
+    return <BookPage navigate={navigate} />;
+}
+
+export default BookPageWrapper;
