@@ -90,7 +90,7 @@ export default class GotService {
             name: name,
             numberOfPages: numberOfPages,
             publisher: publisher,
-            released: released
+            released: released.split('T')[0]
         }
     }
 }
