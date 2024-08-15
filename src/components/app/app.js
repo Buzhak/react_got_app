@@ -1,5 +1,5 @@
 import { BookItem, BookPage, CharacterPage, HousePage } from '../pages';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import {Button, Col, Container, Row} from 'reactstrap';
 import React, { Component } from 'react';
 
@@ -69,6 +69,7 @@ export default class App extends Component {
                             </Col>
                         </Row>
                         <Routes>
+                            <Route path="*" element={<Navigate to="/" replace />} />
                             <Route path='/books' exact element={<BookPage/>}/>
                             <Route path='/books/:id' element={<BookItem/>}/>
                             <Route path='/characters' element={<CharacterPage/>}/>
