@@ -1,6 +1,7 @@
 import { ListGroup, ListGroupItem } from 'reactstrap';
 import React, {Component} from 'react';
 
+import PropTypes from 'prop-types'
 import Spinner from '../spinner';
 import styled from 'styled-components';
 
@@ -59,4 +60,12 @@ export default class ItemList extends Component {
             </ItemListBlock>
         );
     }
+}
+
+ItemList.defaultProps = {
+    onItemSelected: () => {}
+}
+
+ItemList.propTypes = {
+    onItemSelected: PropTypes.func
 }
